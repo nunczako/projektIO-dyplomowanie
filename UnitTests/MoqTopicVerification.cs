@@ -33,14 +33,14 @@ namespace UnitTests
         public void IsTopicGood()
         {
             var mock = new Mock<IValidator>();
-            mock.Setup(x => x.IsTopicCorrect(It.IsAny<string>())).Returns(true);
+            mock.Setup(x => x.IsTopicCorrect("Dobry temat pracy")).Returns(true);
 
             var TestClass = new Thesis(mock.Object);
 
             bool actual = TestClass.IsTopicCorrectOrNot("Dobry temat pracy");
 
             var expected = true;
-            
+
             Assert.AreEqual(expected, actual);
 
         }
