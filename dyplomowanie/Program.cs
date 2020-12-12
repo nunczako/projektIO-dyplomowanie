@@ -82,7 +82,7 @@ namespace dyplomowanie
             AntiplagarismReport report2 = new AntiplagarismReport(14, "Raport wygenerowany pomyslnie");
             Opinion opinion2 = new Opinion(doc2, praca1, 4.0, "Dobrze napisana praca.");
             Review review2 = new Review(doc2, praca1, 5.0, "Swietnie sie czytalo te prace, nie mam zadnych uwag.");
-            
+
 
             praca1.AddAntiPlagarismReport(report1);
             praca1.ConfirmedByAdvisor();
@@ -94,6 +94,8 @@ namespace dyplomowanie
             praca2.AddAntiPlagarismReport(report2);
             praca2.ConfirmedByAdvisor();
             praca2.AddOpinion(opinion2);
+            //wyrejestrowanie z obserwacji przez recenzenta - wystawil on juz recenzje, wiec zdecydowal sie na rezygnacje z obserwacji pracy
+            praca2.UnregisterForNotification(doc1);
             praca2.AddReview(review2);
             double ocena2 = praca2.CalculateMark(praca2.Status, praca2.Review.Mark, praca2.Opinion.Mark);
             Console.WriteLine($"Finalna ocena pracy uwzględniając recenzję oraz opinię wynosi: {ocena2}");
@@ -104,8 +106,8 @@ namespace dyplomowanie
             DiplomaDefend defend1 = new DiplomaDefend(doc1, student1, praca1);
             DiplomaDefend defend2 = new DiplomaDefend(doc2, student2, praca2);
 
-            DateTime date1 = new DateTime(2020, 12, 13, 9, 0, 0);
-            DateTime date2 = new DateTime(2020, 12, 23, 10, 15, 0);
+            DateTime date1 = new DateTime(2021, 1, 12, 9, 0, 0);
+            DateTime date2 = new DateTime(2021, 1, 23, 10, 15, 0);
             Console.WriteLine(defend1.SetDiplomaDefendDate(date1));
             Console.WriteLine(defend2.SetDiplomaDefendDate(date2));
 
